@@ -27,3 +27,37 @@
 .priority-select option:checked[value="High Priority"] {
   background-color: red;
 }
+
+.prio-style1{
+  width: 40px;
+  height: 10px;
+  background-color: #00ff00;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 10px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+.prio-style2{
+  width: 40px;
+  height: 10px;
+  background-color: #eaa505;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 10px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
+.prio-style3{
+  width: 40px;
+  height: 10px;
+  background-color: #db2c00;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 10px;
+  margin-left: 20px;
+  margin-top: 5px;
+}
