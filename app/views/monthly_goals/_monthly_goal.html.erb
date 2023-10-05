@@ -1,0 +1,36 @@
+<div id="<%= dom_id monthly_goal %>">
+
+
+
+
+<div class="minicard mt-5 mx-4">
+<%= monthly_goal.priority %>
+<p class="ms-4 pt-3">
+    <%= monthly_goal.title %><br>
+ <img src= "assets/menu.png"data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= monthly_goal.id %>" width="20px" height="20px">
+    </p>
+
+
+
+
+  <div class="modal fade" id="staticBackdrop<%= monthly_goal.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel<%= monthly_goal.id %>"><%= monthly_goal.title %></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+   <%= monthly_goal.description %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+ </div>
+
+
+</div>
