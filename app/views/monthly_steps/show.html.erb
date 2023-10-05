@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @monthly_step %>
+
+<div>
+  <%= link_to "Edit this monthly step", edit_monthly_step_path(@monthly_step) %> |
+  <%= link_to "Back to monthly steps", monthly_steps_path %>
+
+  <%= button_to "Destroy this monthly step", @monthly_step, method: :delete %>
+</div>

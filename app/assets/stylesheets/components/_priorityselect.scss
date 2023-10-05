@@ -1,0 +1,29 @@
+/* Default styling for the select box */
+.priority-select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* Style for Low Priority option */
+.priority-select option[value="Low Priority"] {
+  background-color: green;
+  color: white;
+}
+
+/* Style for Medium Priority option */
+.priority-select option[value="Medium Priority"] {
+  background-color: orange;
+  color: white;
+}
+
+/* Style for High Priority option */
+.priority-select option[value="High Priority"] {
+  background-color: red;
+  color: white;
+}
+.priority-select option:checked[value="High Priority"] {
+  background-color: red;
+}

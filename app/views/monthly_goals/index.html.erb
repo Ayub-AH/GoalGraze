@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+<h1 >Monthly goals</h1>
+
+<div class="d-flex justify-content-center">
+<div class="card1">
+  <% @monthly_goals.each do |monthly_goal| %>
+    <%= render monthly_goal %>
+
+  <% end %>
+</div>
+</div>
+
+
+<%= link_to "New monthly goal", new_monthly_goal_path %>

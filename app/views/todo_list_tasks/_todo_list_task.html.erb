@@ -1,0 +1,53 @@
+<div id="<%= dom_id todo_list_task %>">
+
+
+<div class="task-design">
+
+<div class="checkbox-wrapper-11 ">
+  <input id="checkbox-<%= todo_list_task.id %>" type="checkbox" name="r" value="2"  data-controller="todo"
+  data-task-id="<%= todo_list_task.id %>">
+  <label for="checkbox-<%= todo_list_task.id %>">To-do</label>
+</div>
+
+<div class="Tasktitle" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= todo_list_task.id %>">
+  <%= todo_list_task.title %>
+  <p>
+  <% if todo_list_task.due_date.present? %>
+    <% if todo_list_task.due_date == Date.today %>
+      <p class= "today"> 🗓️ Today</p>
+    <% elsif todo_list_task.due_date == Date.tomorrow %>
+      <p class= "tomorrow"> 🗓️ Tomorrow</p>
+    <% elsif todo_list_task.due_date == Date.yesterday %>
+      <p class= "yesterday"> 🗓️ Yesterday</p>
+    <% else %>
+      <%= todo_list_task.due_date.strftime('%A, %b %e') %>
+    <% end %>
+  <% else %>
+    <!-- Handle the case where due_date is nil or blank -->
+    <p class="no-due-date">No due date</p>
+  <% end %>
+</div>
+
+
+<!-- Modal -->
+
+<div class="modal fade" id="staticBackdrop<%= todo_list_task.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel<%= todo_list_task.id %>"><%= todo_list_task.title %></h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= todo_list_task.description %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</div>
