@@ -7,7 +7,9 @@
       <footer class="blockquote-footer">
         <cite title="Source Title"></cite>
   <div class="card-footer">
-    <a><%= image_tag("creativity.png", class: "button", width:"50px", height:"50px") %></a>
+    <a class="quoteg" data-bs-toggle="tooltip" data-bs-placement="top"
+        data-bs-custom-class="custom-tooltip"
+        data-bs-title="Click to generate an inspiring quote"><%= image_tag("creativity.png", class: "button", width:"50px", height:"50px") %></a>
 </div>
       </footer>
     </blockquote>
@@ -40,6 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const button = document.querySelector(".button");
   const quote = document.querySelector("blockquote p");
   const cite = document.querySelector("blockquote cite");
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 
   async function updateQuote() {
     // Fetch a random quote from the Quotable API
