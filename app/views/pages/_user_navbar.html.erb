@@ -1,115 +1,58 @@
-  <div class="navbar-container">
-  <nav class="sidebar close">
-    <header>
-      <div class="image-text">
-        <span class="image">
-          <img src="logo.png" alt="">
-        </span>
-
-        <div class="text logo-text">
-          <span class="name">Codinglab</span>
-          <span class="profession">Web developer</span>
-        </div>
-      </div>
-
-      <i class='bx bx-chevron-right toggle'></i>
-    </header>
-
-    <div class="menu-bar">
-      <div class="menu">
-        <ul class="menu-links">
-          <li class="nav-link">
-            <a href="#">
-              <i class='bx bx-home-alt icon'></i>
-          <%= link_to "My Monthly Goals", monthly_goals_path, class:"text nav-text" %>
-            </a>
-          </li>
-
-          <li class="nav-link">
-            <a href="#">
-              <i class='bx bx-bar-chart-alt-2 icon'></i>
-              <span class="text nav-text">My Monthly Feedback</span>
-            </a>
-          </li>
-
-          <li class="nav-link">
-            <a href="#">
-              <i class='bx bx-bell icon'></i>
-              <span class="text nav-text">Notifications</span>
-            </a>
-          </li>
-
-          <li class="nav-link">
-            <a href="#">
-              <i class='bx bx-pie-chart-alt icon'></i>
-              <span class="text nav-text">Analytics</span>
-            </a>
-          </li>
-
-          <li class="nav-link">
-            <a href="#">
-              <i class='bx bx-heart icon'></i>
-              <span class="text nav-text">Likes</span>
-            </a>
-          </li>
-
-          <li class="nav-link">
-            <a href="#">
-              <i class='bx bx-wallet icon'></i>
-              <span class="text nav-text">Wallets</span>
-            </a>
-          </li>
-
-        </ul>
-      </div>
-
-      <div class="bottom-content">
-        <li class="">
-          <a href="#">
-            <i class='bx bx-log-out icon'></i>
-            <span class="text nav-text">Logout</span>
-          </a>
-        </li>
-
-        <li class="mode">
-          <div class="sun-moon">
-            <i class='bx bx-moon icon moon'></i>
-            <i class='bx bx-sun icon sun'></i>
-          </div>
-          <span class="mode-text text">Dark mode</span>
-
-          <div class="toggle-switch">
-            <span class="switch"></span>
-          </div>
-        </li>
-
-      </div>
+<div class="nav" id="nav">
+  <nav class="nav__content">
+    <div class="nav__toggle" id="nav-toggle">
+      <i class='bx bx-chevron-right' ></i>
     </div>
-
+    <a href="#" class="nav__logo">
+    <i class='bx bxs-heart' ></i>
+    <span class="nav__logo-name">GoalGraze</span>
+    </a>
+    <div class="nav__list">
+      <a href="/todo_list_tasks" class="nav__link active-link">
+      <i class='bx bx-grid-alt'></i>
+      <span class="nav__name">My Tasks</span>
+      </a>
+      <a href="/monthly_goals" class="nav__link">
+      <i class='bx bx-file'></i>
+      <span class="nav__name">My Monthly Goals</span>
+      </a>
+      <a href="/feedbacks" class="nav__link">
+      <i class='bx bx-envelope' ></i>
+      <span class="nav__name">My Monthly Feedbacks</span>
+      </a>
+      <a href="#" class="nav__link">
+      <i class='bx bx-bar-chart-square' ></i>
+      <span class="nav__name">Statistic</span>
+      </a>
+      <a href="#" class="nav__link">
+      <i class='bx bx-cog' ></i>
+      <span class="nav__name">Settings</span>
+      </a>
+    </div>
   </nav>
-   </div>
+</div>
 
 
 
   <script>
-    const body = document.querySelector('body'),
-      sidebar = body.querySelector('nav'),
-      toggle = body.querySelector(".toggle"),
-      searchBtn = body.querySelector(".search-box"),
-      modeSwitch = body.querySelector(".toggle-switch"),
-      modeText = body.querySelector(".mode-text");
-    toggle.addEventListener("click", () => {
-      sidebar.classList.toggle("close");
-    })
-    searchBtn.addEventListener("click", () => {
-      sidebar.classList.remove("close");
-    })
-    modeSwitch.addEventListener("click", () => {
-      body.classList.toggle("dark");
-      if (body.classList.contains("dark")) {
-        modeText.innerText = "Light mode";
-      } else {
-        modeText.innerText = "Dark mode";
-      }
-    });
+  const linkColor = document.querySelectorAll('.nav__link')
+function colorLink(){
+  linkColor.forEach(l => l.classList.remove('active-link'))
+  this.classList.add('active-link')
+}
+linkColor.forEach(l => l.addEventListener('click', colorLink))
+/*=============== SHOW HIDDEN MENU ===============*/
+const showMenu = (toggleId, navbarId) =>{
+  const toggle = document.getElementById(toggleId),
+  navbar = document.getElementById(navbarId)
+  if(toggle && navbar){
+      toggle.addEventListener('click', ()=>{
+          /* Show menu */
+          navbar.classList.toggle('show-menu')
+          /* Rotate toggle icon */
+          toggle.classList.toggle('rotate-icon')
+      })
+  }
+}
+showMenu('nav-toggle','nav')
   </script>

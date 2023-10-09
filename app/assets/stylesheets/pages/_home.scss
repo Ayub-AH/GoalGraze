@@ -326,3 +326,14 @@ color: rgb(174, 174, 174)
   font-family: georgia;
   font-style: italic;
 }
+.quoteg :hover{
+ cursor: pointer;
+
+}
+.quoteg:hover + .hidden-text {
+  display: block;
+}
+/* Target the tooltip content */
+.tooltip-inner{
+  background-color: rgb(217, 190, 35); /* Your custom tooltip text color */
+}
