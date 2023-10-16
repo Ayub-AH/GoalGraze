@@ -25,12 +25,23 @@ margin: 0 auto;
   opacity: 0.8;
 }
 
-.task-design{
-  background-color:antiquewhite;
+/* Add a container to position the delete icon */
+.task-design {
+  background-color: antiquewhite;
   border-radius: 10px;
-  width:70vw;
-  margin:0 auto
+  width: 70vw;
+  margin: 0 auto;
+  position: relative; /* Add relative positioning to the card container */
 }
+
+.delete_update {
+  position: absolute; /* Use absolute positioning for the delete icon */
+  top: 0; /* Place it at the top of the card */
+  right: 0; /* Place it at the right side of the card */
+  padding: 10px; /* Add padding for some spacing */
+  cursor: pointer; /* Make it a pointer for interaction */
+}
+
 .Tasktitle{
   padding-left:100px;
 
