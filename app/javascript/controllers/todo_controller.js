@@ -1,70 +1,55 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="todo"
 export default class extends Controller {
-  static targets = ["checkbox"];
+  static targets = ["checkbox", "task"];
 
   connect() {
-    // Add an event listener to the checkbox elements
-    console.log("stimulus loaded")
-    console.log("CSRF Token:", document.querySelector('meta[name="csrf-token"]').getAttribute("content"));
-
     this.checkboxTargets.forEach((checkbox) => {
-      checkbox.addEventListener("change", () => {
-        this.updateTaskStatus(checkbox);
-      });
+      checkbox.addEventListener("change", this.handleCheckboxChange.bind(this));
+    });
+
+    // Apply the visibility state when the page loads
+    window.addEventListener("load", () => {
+      this.applyVisibilityState();
     });
   }
 
-  updateTaskStatus(checkbox) {
-    const taskId = checkbox.dataset.taskId;
-    const completed = checkbox.checked;
-
-    // Make an AJAX request to update the task status
-    fetch(`/todo_list_tasks/${taskId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-      },
-      body: JSON.stringify({ todo_list_task: { completed } }),
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log("Task completion status updated.");
-          if (completed) {
-            // Schedule a timer to move the task to completed items
-            setTimeout(() => {
-              this.moveToCompletedItems(taskId);
-            }, 5000);
-          }
-        } else {
-          console.error("Failed to update task completion status.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  disconnect() {
+    this.checkboxTargets.forEach((checkbox) => {
+      checkbox.removeEventListener("change", this.handleCheckboxChange);
+    });
   }
 
-  moveToCompletedItems(taskId) {
-    // Make an AJAX request to move the completed task to completed items
-    fetch(`/todo_list_tasks/${taskId}/move_to_completed`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
-      },
-    })
-      .then((response) => {
-        if (response.ok) {
-          console.log("Task moved to completed items.");
-        } else {
-          console.error("Failed to move task to completed items.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+  handleCheckboxChange(event) {
+    const checkbox = event.currentTarget;
+    const taskId = checkbox.getAttribute("data-task-id");
+    if (checkbox.checked) {
+      console.log(`Checkbox is checked for task ${taskId}`);
+      // Add your logic for handling checked checkboxes here
+      this.taskTarget.classList.add("fade-out");
+      setTimeout(() => {
+        this.taskTarget.classList.add("d-none");
+      }, 2000);
+
+      // Store the visibility state in localStorage
+      localStorage.setItem(`taskVisibility_${taskId}`, "hidden");
+    } else {
+      console.log(`Checkbox is not checked for task ${taskId}`);
+      // Add your logic for handling unchecked checkboxes here
+
+      // Store the visibility state in localStorage
+      localStorage.setItem(`taskVisibility_${taskId}`, "visible");
+    }
+  }
+
+  applyVisibilityState() {
+    this.taskTargets.forEach((task) => {
+      const taskId = task.getAttribute("data-task-id");
+      const isHidden = localStorage.getItem(`taskVisibility_${taskId}`);
+
+      if (isHidden === "hidden") {
+        task.classList.add("d-none");
+      }
+    });
   }
 }
