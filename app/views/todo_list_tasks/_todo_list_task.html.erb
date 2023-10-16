@@ -1,11 +1,11 @@
 <div id="<%= dom_id todo_list_task %>">
 
 
-<div class="task-design">
+<div class="task-design" data-controller="todo" data-todo-target="task">
 
 <div class="checkbox-wrapper-11 ">
-  <input id="checkbox-<%= todo_list_task.id %>" type="checkbox" name="r" value="2"  data-controller="todo"
-  data-task-id="<%= todo_list_task.id %>">
+  <input id="checkbox-<%= todo_list_task.id %>" type="checkbox" name="r" value="2"
+  data-task-id="<%= todo_list_task.id %>" data-todo-target= "checkbox">
   <label for="checkbox-<%= todo_list_task.id %>">To-do</label>
 </div>
 
@@ -47,6 +47,8 @@
     </div>
   </div>
 </div>
+
+
 
 </div>
 

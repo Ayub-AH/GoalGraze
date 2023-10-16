@@ -20,19 +20,31 @@ class FeedbacksController < ApplicationController
   end
 
   # POST /feedbacks or /feedbacks.json
-  def create
-    @feedback = Feedback.new(feedback_params)
+ # app/controllers/feedbacks_controller.rb
+def create
+  # Check if a feedback already exists for the same month and user
+  existing_feedback = Feedback.find_by(month: feedback_params[:month], user_id: current_user.id)
 
-    respond_to do |format|
-      if @feedback.save
-        format.html { redirect_to feedback_url(@feedback), notice: "Feedback was successfully created." }
-        format.json { render :show, status: :created, location: @feedback }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @feedback.errors, status: :unprocessable_entity }
-      end
+  if existing_feedback
+    # Update the existing feedback
+    if existing_feedback.update(feedback_params)
+      redirect_to feedback_url(existing_feedback), notice: "Feedback was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  else
+    # Create a new feedback if none exists for the same month and user
+    @feedback = Feedback.new(feedback_params)
+    @feedback.user = current_user
+
+    if @feedback.save
+      redirect_to feedback_url(@feedback), notice: "Feedback was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
+end
+
 
   # PATCH/PUT /feedbacks/1 or /feedbacks/1.json
   def update

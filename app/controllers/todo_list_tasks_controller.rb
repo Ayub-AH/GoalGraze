@@ -57,11 +57,15 @@ class TodoListTasksController < ApplicationController
 
   # DELETE /todo_list_tasks/1 or /todo_list_tasks/1.json
   def destroy
+    if
     @todo_list_task.destroy
 
     respond_to do |format|
       format.html { redirect_to todo_list_tasks_url, notice: "Todo list task was successfully destroyed." }
       format.json { head :no_content }
+    end
+    else
+      render :index, status: :unprocessable_entity
     end
   end
 
