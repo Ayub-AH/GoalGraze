@@ -167,3 +167,11 @@ a {
   text-decoration: none;
   margin-top:5px
 }
+.fade-out {
+  opacity: 0; /* Set the initial opacity to fully transparent */
+  transition: opacity 4s ease-in-out; /* Apply a smooth transition over 0.5 seconds */
+
+
+  /* Optionally hide the element completely after it fades out */
+
+}

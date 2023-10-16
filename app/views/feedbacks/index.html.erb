@@ -2,13 +2,24 @@
 
 <h1>Feedbacks</h1>
 
-<div id="feedbacks">
-  <% @feedbacks.each do |feedback| %>
-    <%= render feedback %>
-    <p>
-      <%= link_to "Show this feedback", feedback %>
-    </p>
+
+
+<ul>
+  <% months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"] %>
+  <% months.each_with_index do |month, index| %>
+    <% feedbacks = @feedbacks.select { |feedback| feedback.month == month } %>
+    <% if feedbacks.any? %>
+      <li>
+        <time datetime="<%= Date.current.strftime("%Y-%m-#{index + 1}") %>"><%= month %>, <%= Date.current.strftime("%Y") %></time>
+        <% feedbacks.each do |feedback| %>
+          <%= feedback.title %>
+        <% end %>
+      </li>
+    <% end %>
   <% end %>
-</div>
+</ul>
+
+
+
 
 <%= link_to "New feedback", new_feedback_path %>
