@@ -1,3 +1,8 @@
+body{
+  font-family: 'Style Script', cursive;
+  font-size: 20px;
+}
+
 .avatar {
   width: 40px;
   border-radius: 50%;
@@ -22,14 +27,24 @@
 
 .card1{
   height:50vh;
-  background-color: beige;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   width: 50vw;
 
 }
 .minicard{
   display:flex;
   flex-direction: column;
-  background-color: rgb(252, 241, 241);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 10px;
   height:10vh;
 
