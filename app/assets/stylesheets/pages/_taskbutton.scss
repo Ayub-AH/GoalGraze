@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+
+.createbutton {
+
+  background-color: #FFD700; /* Gold color for the button */
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  margin:0 auto;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out; /* Use a single transition property */
+
+  /* Set initial content using a pseudo-element */
+  position: relative;
+}
+
+.createbutton::before {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+  content: "Create my task";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.createbutton:hover {
+  background-color: #FFCC00;
+}
+
+.createbutton:hover::before {
+  font-family: 'Bebas Neue', sans-serif;
+  content: "Let's get to work!";
+  font-size: 20px;
+}
