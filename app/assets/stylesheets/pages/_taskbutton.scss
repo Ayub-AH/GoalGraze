@@ -1,39 +1,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
-
-
 .createbutton {
 
-  background-color: #FFD700; /* Gold color for the button */
+  background-color: #FFC65A;; /* Gold color for the button */
   color: #333;
   padding: 10px 20px;
   border: none;
+  max-width: 200px;
+  width: 150px;
   margin:0 auto;
   border-radius: 5px;
   cursor: pointer;
   margin-top: 10px;
-  font-weight: bold;
-  transition: background-color 0.3s ease-in-out; /* Use a single transition property */
-
+  transition: background-color, color 0.3s ease-in-out; /* Use a single transition property */
   /* Set initial content using a pseudo-element */
   position: relative;
 }
 
 .createbutton::before {
-  font-family:Georgia, 'Times New Roman', Times, serif;
-  content: "Create my task";
+  font-family: 'Bebas Neue', sans-serif;  content: "Create my task";
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-size: 20px;
 }
 
 .createbutton:hover {
-  background-color: #FFCC00;
+  background-color: #191919;
+  color:#B88746
 }
 
 .createbutton:hover::before {
   font-family: 'Bebas Neue', sans-serif;
   content: "Let's get to work!";
   font-size: 20px;
+}
+.addtask:hover{
+  background-color: #191919 !important;
+  color:#B88746 !important;
+  cursor: pointer;
+}
+.addtask{
+  background-color: #FFC65A;
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    height: 20px;
+       padding: 20px;
+    border-radius: 6px;
+}
+.completed{
+  color: #B88746;
+  margin-left: 9px;
+  margin-top: 5px;
+}
+.completed:hover{
+  background-color: #191919 !important;
+  color:#B88746 !important;
+}
+#completedtaskdesign{
+  margin-top: 30px;
 }
