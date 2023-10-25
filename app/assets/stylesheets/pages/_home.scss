@@ -3,7 +3,9 @@ body {
 background-image: url("assets/bg.jpg");
 height:100vh;
 background-position: center;
+background-attachment: fixed;
 background-size: cover;
+background-repeat: no-repeat;
 }
 .signup-card{
 width: 50vw;
@@ -351,4 +353,9 @@ color: rgb(174, 174, 174)
 /* Target the tooltip content */
 .tooltip-inner{
   background-color: rgb(217, 190, 35); /* Your custom tooltip text color */
+}
+
+
+.modal {
+  z-index: 999;
 }

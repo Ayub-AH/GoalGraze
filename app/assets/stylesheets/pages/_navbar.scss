@@ -56,7 +56,7 @@ a {
 }
 .nav__link {
   display: flex;
-  color: var(--text-color);
+  color: #191919;
   font-weight: 500;
   transition: .3s;
 }
@@ -64,7 +64,8 @@ a {
   font-size: 1.25rem;
 }
 .nav__link:hover {
-  color: var(--first-color);
+  color: #B88746;
+  background-color: #191919;
 }
 /* Active link */
 .active-link {
@@ -182,8 +183,12 @@ a {
 
 .beach-form {
   margin-top: 5px;
-  background-color: rgba(100, 149, 237, 0.4); /* Light blue background */
-  border: 1px solid #ccc;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 10px;
   padding: 20px;
   width: 300px;
