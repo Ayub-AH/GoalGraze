@@ -3,7 +3,7 @@
 
 
 
-<div class="minicard mt-3 mx-2">
+<div class="minicard mt-3 mx-2" data-bs-toggle="popover" data-bs-title=" <%= monthly_goal.title %>" data-bs-content="<%= monthly_goal.description%>" data-custom-popover="true" data-bs-placement="top" data-bs-custom-class="custom-popover">
 <% if monthly_goal.priority== "Low Priority" %>
 <div class="prio-style1"></div>
 <% elsif monthly_goal.priority== "Medium Priority"%>
@@ -13,31 +13,42 @@
 <% end %>
 <p class="ms-4 ">
     <%= monthly_goal.title %><br>
- <img src= "assets/menu.png"data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= monthly_goal.id %>" width="20px" height="20px">
     </p>
 
 
 
-
-  <div class="modal fade" id="staticBackdrop<%= monthly_goal.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel<%= monthly_goal.id %>"><%= monthly_goal.title %></h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-   <%= monthly_goal.description %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
  </div>
 
 
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+  });
+</script>
+
+<style>
+.popover  {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.custom-popover{
+ --bs-popover-max-width: 600px;
+  --bs-popover-border-color: var(--bd-violet-bg);
+  --bs-popover-header-bg: var(--bd-violet-bg);
+  --bs-popover-header-color: #191919;
+  --bs-popover-body-padding-x: 1rem;
+  --bs-popover-body-padding-y: .5rem;
+
+}
+
+
+</style>
