@@ -1,17 +1,10 @@
-
 <%= simple_form_for(@todo_list_task) do |f| %>
-
-
   <div class="beach-form">
-    <%= f.input :title , input_html: {class: "task_form"} %>
-    <%= f.input :description , input_html: {class: "task_form"} %>
-    <%= f.input :due_date, required: true, as: :date , input_html: {class: "task_form"} %>
+    <%= f.input :title, input_html: { class: "task_form" } %>
+    <%= f.input :description, input_html: { class: "task_form" } %>
+    <%= f.input :due_date, input_html: { class: "task_form" } %>
 
+    <%= f.button :submit, "Create My Task", class: "createbutton" %>
 
-
-<div class="createbutton">
-  <%= f.button :submit, " "%>
   </div>
-   </div>
-
 <% end %>

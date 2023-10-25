@@ -4,9 +4,12 @@ Rails.application.routes.draw do
   resources :monthly_goals
   resources :todo_list_tasks do
     member do
-      post "move_to_completed"
+      post 'complete_task'
     end
   end
+  # config/routes.rb
+get 'completed_tasks', to: 'todo_list_tasks#completed_tasks', as: 'completed_tasks'
+
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
