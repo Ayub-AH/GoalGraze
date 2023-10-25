@@ -49,6 +49,8 @@
   border-bottom-left-radius: 10px;
   margin-left: 20px;
   margin-top: 5px;
+  animation:heartBeat2 1s ease 5 0s;
+
 }
 .prio-style3{
   width: 40px;
@@ -60,4 +62,21 @@
   border-bottom-left-radius: 10px;
   margin-left: 20px;
   margin-top: 5px;
+  animation:heartBeat 1s ease infinite 0s;
+}
+
+@keyframes heartBeat {
+  0% { transform:scale(1); }
+  15% { transform:scale(1.2); }
+  25% { transform:scale(1.1); }
+  35% { transform:scale(1.2); }
+  100% { transform:scale(1); }
+}
+
+@keyframes heartBeat2 {
+  0% { transform:scale(0.5); }
+  15% { transform:scale(0.9); }
+  25% { transform:scale(0.8); }
+  35% { transform:scale(0.9); }
+  100% { transform:scale(0.5); }
 }
