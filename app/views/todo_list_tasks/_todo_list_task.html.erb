@@ -2,14 +2,15 @@
 
 
 <div class="task-design" data-controller="todo" data-todo-target="task">
-
+<%  if  @incomplete_tasks.include?(todo_list_task) %>
 <div class="checkbox-wrapper-11 ">
   <input id="checkbox-<%= todo_list_task.id %>" type="checkbox" name="r" value="2"
-  data-task-id="<%= todo_list_task.id %>" data-todo-target= "checkbox">
+    data-task-id="<%= todo_list_task.id %>" data-todo-target="checkbox">
   <label for="checkbox-<%= todo_list_task.id %>">To-do</label>
 </div>
+<% end %>
 
-<div class="Tasktitle" data-bs-toggle="modal" data-bs-target="#staticBackdrop<%= todo_list_task.id %>">
+<div class="Tasktitle" data-bs-toggle="popover" data-bs-title=" <%= todo_list_task.title %>" data-bs-content="<%= todo_list_task.description%>" data-custom-popover="true" data-bs-placement="top" data-bs-custom-class="custom-popover"  >
   <%= todo_list_task.title %>
   <p>
   <% if todo_list_task.due_date.present? %>
@@ -29,27 +30,78 @@
 </div>
 
 
+
+
+
+
+
+
+
+<!-- Button trigger modal -->
+
+
 <!-- Modal -->
 
-<div class="modal fade" id="staticBackdrop<%= todo_list_task.id %>" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel<%= todo_list_task.id %>"><%= todo_list_task.title %></h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <%= todo_list_task.description %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
 
 </div>
 
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+  });
+</script>
+
+<style>
+.popover  {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.custom-popover{
+ --bs-popover-max-width: 600px;
+  --bs-popover-border-color: var(--bd-violet-bg);
+  --bs-popover-header-bg: var(--bd-violet-bg);
+  --bs-popover-header-color: #191919;
+  --bs-popover-body-padding-x: 1rem;
+  --bs-popover-body-padding-y: .5rem;
+
+}
+
+
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const checkboxes = document.querySelectorAll('[data-todo-target="checkbox"]');
+
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener("change", function() {
+        if (this.checked) {
+          // Get the task ID from the checkbox's data attribute
+          const taskId = this.getAttribute("data-task-id");
+
+          // Make an AJAX request to complete the task
+          fetch(`/todo_list_tasks/${taskId}/complete_task`, {
+            method: "POST",
+            headers: {
+              "X-CSRF-Token": "<%= form_authenticity_token %>",
+            },
+          })
+            .then(response => {
+              if (response.ok) {
+                // Redirect to the completed tasks page
+                window.location.href = "<%= completed_tasks_path %>";
+              } else {
+                console.error("Error completing the task.");
+              }
+            });
+        }
+      });
+    });
+  });
+</script>
