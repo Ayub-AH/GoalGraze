@@ -28,6 +28,26 @@
     <p class="no-due-date">No due date</p>
   <% end %>
 </div>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    // Get all task elements
+    const taskElements = document.querySelectorAll(".task-design");
+
+    // Iterate through each task and check if it has a "To-do" label
+    taskElements.forEach(function(taskElement) {
+      const todoLabel = taskElement.querySelector(".checkbox-wrapper-11 label");
+      if (!todoLabel) {
+        // Task doesn't have a "To-do" label, add a class to it
+        taskElement.classList.add("hide");
+      }
+    });
+  });
+</script>
+<style>
+.hide{
+  display:none;
+}
+</style>
 
 
 
