@@ -10,6 +10,7 @@ class TodoListTasksController < ApplicationController
 
   # GET /todo_list_tasks/1 or /todo_list_tasks/1.json
   def show
+    @incomplete_tasks = current_user.todo_list_tasks.where(completed: false)
   end
 
   # GET /todo_list_tasks/new

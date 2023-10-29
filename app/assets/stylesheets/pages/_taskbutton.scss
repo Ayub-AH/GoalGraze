@@ -69,13 +69,56 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 10px;
+margin: 0 auto;
   background-color: #FFC65A;
   width: 70px;
   height: 70px;
-  margin-left: 200px;
   border-radius: 50%;
   font-size: 60px;
-  /*needs to be finished styling*/
+  text-align: center;
+  color: #191919;
 
+
+}
+.createmonthlygoal:hover{
+  background-color:#191919;
+}
+.plus:link, .plus:visited{
+  color:black;
+  margin-top:5px;
+}
+
+.plus:hover{
+  color:#B88746;
+}
+.createbuttonmg{
+  background-color: #FFC65A;; /* Gold color for the button */
+  color: #333;
+  padding: 10px 20px;
+  border: none;
+  max-width: 400px;
+  width: 250px;
+  margin:0 auto;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color, color 0.3s ease-in-out; /* Use a single transition property */
+  /* Set initial content using a pseudo-element */
+  position: relative;
+}
+.createbuttonmg:hover {
+  background-color: #191919;
+  color:#B88746
+}
+.beachformmg{
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 10px;
+    padding: 20px;
+    width: 300px;
+    margin: 100px 200px 0 auto;
 }

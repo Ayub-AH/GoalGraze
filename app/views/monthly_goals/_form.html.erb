@@ -3,7 +3,7 @@
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-
+ <div class="beachformmg">
     <%= f.input :title %>
     <%= f.input :description %>
     <%= f.input :priority, as: :select, collection: ["Low Priority", "Medium Priority", "High Priority"], label: "Priority", input_html: { class: "priority-select"} %>
@@ -11,6 +11,7 @@
 
 
   <div class="form-actions">
-    <%= f.button :submit %>
+     <%= f.button :submit, "Create My Monthly Goal", class: "createbuttonmg"%>
   </div>
+</div>
 <% end %>
