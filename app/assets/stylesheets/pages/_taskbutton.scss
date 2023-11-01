@@ -54,42 +54,55 @@
 }
 .completed{
   color: #B88746;
-  margin-left: 9px;
-  margin-top: 5px;
-}
-.completed:hover{
   background-color: #191919 !important;
-  color:#B88746 !important;
+  position: relative;
+  top:0;
+  left:0;
+  padding:0 6px 2px 4px;
+  border-top-right-radius: 10px;
 }
+
 #completedtaskdesign{
   margin-top: 30px;
 }
-.createmonthlygoal{
-  text-decoration: none;
+.addmonthlygoal{
+  margin:0 auto;
   display: flex;
   justify-content: center;
   align-items: center;
-margin: 0 auto;
-  background-color: #FFC65A;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  font-size: 60px;
-  text-align: center;
-  color: #191919;
 
 
 }
-.createmonthlygoal:hover{
-  background-color:#191919;
-}
-.plus:link, .plus:visited{
-  color:black;
-  margin-top:5px;
+.addmonthlygoal:hover{
+  cursor:pointer;
 }
 
-.plus:hover{
-  color:#B88746;
+
+#addmg{
+  animation-name: updown;
+ animation-duration: 6s;
+  position: relative;
+
+
+}
+@keyframes updown{
+  0%{
+    top:0;
+  }
+  25%{
+    top:100px;
+  }
+  50%{
+    top: 0;
+
+  }
+  75%{
+    top:100px;
+
+  }
+  100%{
+    top:0px;
+  }
 }
 .createbuttonmg{
   background-color: #FFC65A;; /* Gold color for the button */
