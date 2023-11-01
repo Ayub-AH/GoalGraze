@@ -8,6 +8,14 @@
     <%= render monthly_goal %>
 
   <% end %>
-   <div class="minicard mt-3 mx-2"><div class= "createmonthlygoal"><%= link_to "+", new_monthly_goal_path, class: "plus" %></div>
+   <div class="minicard mt-3 mx-2" id="addmg">
+<%= link_to new_monthly_goal_path do %>
+  <img src="assets/addmonthlygoal.png" class="addmonthlygoal" width="50px" height="70px" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tooltip on bottom">
+<% end %>
+   </div>
 </div>
 </div>
+<script>
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+</script>
