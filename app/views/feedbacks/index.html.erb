@@ -12,7 +12,9 @@
       <li>
         <time datetime="<%= Date.current.strftime("%Y-%m-#{index + 1}") %>"><%= month %>, <%= Date.current.strftime("%Y") %></time>
         <% feedbacks.each do |feedback| %>
+          <%= link_to feedback_path(feedback) do%>
           <%= feedback.title %>
+        <% end %>
         <% end %>
       </li>
     <% end %>

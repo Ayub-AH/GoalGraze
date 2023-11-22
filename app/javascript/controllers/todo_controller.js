@@ -52,4 +52,15 @@ export default class extends Controller {
       }
     });
   }
+  complete() {
+    const taskId = this.checkboxTarget.dataset.taskId;
+    fetch(`/complete_task/${taskId}`, { method: "PATCH" })
+      .then(() => {
+        // You can update the UI as needed, e.g., hide the completed task
+        this.element.classList.add("completed");
+      })
+      .catch(error => {
+        console.error("Error completing task:", error);
+      });
+  }
 }
