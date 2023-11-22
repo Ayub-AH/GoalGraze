@@ -3,10 +3,13 @@
     <div class="nav__toggle" id="nav-toggle">
       <i class='bx bx-chevron-right' ></i>
     </div>
+    <div id="nav_logo">
     <a href="/todo_list_tasks" class="nav__logo">
     <i class='bx bxs-heart' ></i>
-    <span class="nav__logo-name">GoalGraze</span>
+    <span class="nav__logo-name ">GoalGraze</span>
+    <div class="logoimg"><img src = "assets/FAVICON.png" width="60px" height="60px" class="imglogo"></div>
     </a>
+    </div>
     <div class="nav__list">
       <a href="/todo_list_tasks" class="nav__link active-link">
       <i class='bx bx-grid-alt'></i>
@@ -56,3 +59,16 @@ const showMenu = (toggleId, navbarId) =>{
 }
 showMenu('nav-toggle','nav')
   </script>
+<style>
+:root{
+  --title-color: hsl(228, 12%, 15%);
+}
+ .imglogo {
+  border-radius: 50%;
+  display:block;
+}
+
+
+
+
+</style>
