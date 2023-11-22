@@ -62,3 +62,42 @@ ul {
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.18);
 }
+
+.feedbackinfo{
+  display:flex;
+  flex-direction: column;
+  margin:0 auto;
+  border-style:dotted;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-width: 3px;
+  width:350px;
+  height:auto;
+  padding-bottom: 10px;
+  transition: transform 0.3s;
+
+}
+.feedbackinfo:hover{
+  transform: scale(1.1);
+  cursor:pointer;
+}
+.ftitle{
+  margin-top:10px;
+  padding-top: 0;
+  border-bottom:goldenrod solid 1px;
+  text-align: center;
+}
+.fcontent{
+  text-align: center;
+}
+.fcontent::before {
+  content: "→ "; /* Add the content you want before each line */
+  color: goldenrod; /* Set the color of the added content */
+  margin-right: 5px; /* Add some spacing between the content and the paragraph text */
+  font-weight: bold; /* Adjust font properties if needed */
+}
