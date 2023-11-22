@@ -10,8 +10,49 @@
                 input_html: { autocomplete: "current-password", class: "input" } %>
     <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
     <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+      <%= f.button :submit, "Log in", class:"login" %>
     </div>
 <% end %>
 <%= render "devise/shared/links" %>
   </div>
+  <style>
+
+.welcomeback {
+  font-family: "lato";
+  font-size: 24px;
+  color: #ecb444 !important;
+  background: #ffc10736;
+  border-radius: 3px;
+  padding: 0 5px 0 5px;
+}
+.form-actions input[type="submit"] {
+  background-color: #ffa937 ;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+a {
+  text-decoration: none;
+  background-color: #ffa937;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.input {
+  background-color: #ffc32d !important;/* Gold input background */
+  border: 2px solid #191919; /* Dark orange border */
+  color: rgba(255, 255, 255, 0.868); /* Sea green text color */
+  border-radius: 5px;
+}
+a:hover{
+  background-color:#191919;
+}
+.login:hover{
+    background-color:#191919  !important;
+}
+  </style>

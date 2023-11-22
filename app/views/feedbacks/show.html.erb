@@ -1,10 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @feedback %>
+<div class="feedbackinfo" >
+<div class="ftitle"><%= @feedback.title %></div>
+<div class="fcontent"><%= @feedback.content %></div>
 
-<div>
-  <%= link_to "Edit this feedback", edit_feedback_path(@feedback) %> |
-  <%= link_to "Back to feedbacks", feedbacks_path %>
-
-  <%= button_to "Destroy this feedback", @feedback, method: :delete %>
+  <div class="deletef">
+  <%= link_to "📝", edit_feedback_path(@feedback) %>
+  <%= link_to "🔙", feedbacks_path %>
+<%= button_to "🗑️", @feedback, method: :delete, class: "deleteb" %>
 </div>
+</div>
+<style>
+.deletef{
+display: flex;
+justify-content: space-between;
+margin-bottom: 0;
+}
+.deleteb{
+  background-color: inherit;
+  border: none;
+}
+
+
+</style>
