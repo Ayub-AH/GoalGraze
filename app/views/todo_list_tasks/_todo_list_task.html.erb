@@ -5,7 +5,7 @@
 <%  if  @incomplete_tasks.include?(todo_list_task) %>
 <div class="checkbox-wrapper-11 ">
   <input id="checkbox-<%= todo_list_task.id %>" type="checkbox" name="r" value="2"
-    data-task-id="<%= todo_list_task.id %>" data-todo-target="checkbox">
+    data-task-id="<%= todo_list_task.id %>" data-todo-target="checkbox"  data-action="click->todo#complete">
   <label for="checkbox-<%= todo_list_task.id %>">To-do</label>
 </div>
 <% end %>
@@ -91,7 +91,10 @@
   --bs-popover-body-padding-y: .5rem;
 
 }
-
+.task-design:hover{
+  transform:scale(1.1);
+  cursor: pointer;
+}
 
 </style>
 

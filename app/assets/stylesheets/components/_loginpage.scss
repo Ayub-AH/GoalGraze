@@ -16,29 +16,10 @@
   padding-top:10px;
   padding-bottom: 10px;
 }
-.input {
-  background-color: rgba(218, 165, 32, 0.561) !important; /* Gold input background */
-  border: 2px solid #191919; /* Dark orange border */
-  color: rgba(255, 255, 255, 0.868); /* Sea green text color */
-  border-radius: 5px;
-}
 
-.welcomeback {
-  font-family: "lato";
-  font-size: 24px; /* Larger font size */
-  color: goldenrod; /* Royal blue color */
-}
 
 .form-actions {
   margin-top: 20px; /* Extra margin below the inputs */
 }
 
 /* Additional styles for the submit button */
-.form-actions input[type="submit"] {
-  background-color: #B88746; /* Light sky blue background for the button */
-  color: #fff; /* White text color */
-  padding: 10px 20px; /* Padded button */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
