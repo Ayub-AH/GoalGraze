@@ -1,4 +1,4 @@
-🌟 Welcome to GoalGraze: Where goals meet Action!
+🌟 Welcome to GoalGraze: Where dreams meet Action!
 
 Unleash the power of organization and motivation with GoalGraze, a modern todo and goal tracking app designed to transform your daily routine into a dynamic journey of achievement and growth.
 
