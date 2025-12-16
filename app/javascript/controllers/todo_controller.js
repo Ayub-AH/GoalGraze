@@ -5,7 +5,17 @@ export default class extends Controller {
 
   connect() {
     this.boundCheckboxChange = this.handleCheckboxChange.bind(this);
+    this.checkboxTargets.forEach((checkbox) => {
+      checkbox.addEventListener("change", this.handleCheckboxChange.bind(this));
+    });
 
+    // Apply the visibility state when the page loads
+    window.addEventListener("load", () => {
+      this.applyVisibilityState();
+    });
+  }
+
+  disconnect() {
     this.checkboxTargets.forEach((checkbox) => {
       checkbox.addEventListener("change", this.boundCheckboxChange);
     });
@@ -22,6 +32,10 @@ export default class extends Controller {
         checkbox.removeEventListener("change", this.boundCheckboxChange);
       });
     }
+  }
+
+      checkbox.removeEventListener("change", this.handleCheckboxChange);
+    });
   }
 
   handleCheckboxChange(event) {
@@ -82,5 +96,37 @@ export default class extends Controller {
   get csrfToken() {
     const tokenElement = document.querySelector('meta[name="csrf-token"]');
     return tokenElement ? tokenElement.getAttribute("content") : "";
+
+      // Store the visibility state in localStorage
+      localStorage.setItem(`taskVisibility_${taskId}`, "hidden");
+    } else {
+      console.log(`Checkbox is not checked for task ${taskId}`);
+      // Add your logic for handling unchecked checkboxes here
+
+      // Store the visibility state in localStorage
+      localStorage.setItem(`taskVisibility_${taskId}`, "visible");
+    }
+  }
+
+  applyVisibilityState() {
+    this.taskTargets.forEach((task) => {
+      const taskId = task.getAttribute("data-task-id");
+      const isHidden = localStorage.getItem(`taskVisibility_${taskId}`);
+
+      if (isHidden === "hidden") {
+        task.classList.add("d-none");
+      }
+    });
+  }
+  complete() {
+    const taskId = this.checkboxTarget.dataset.taskId;
+    fetch(`/complete_task/${taskId}`, { method: "PATCH" })
+      .then(() => {
+        // You can update the UI as needed, e.g., hide the completed task
+        this.element.classList.add("completed");
+      })
+      .catch(error => {
+        console.error("Error completing task:", error);
+      });
   }
 }

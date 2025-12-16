@@ -97,3 +97,34 @@
 }
 
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const checkboxes = document.querySelectorAll('[data-todo-target="checkbox"]');
+
+    checkboxes.forEach(checkbox => {
+      checkbox.addEventListener("change", function() {
+        if (this.checked) {
+          // Get the task ID from the checkbox's data attribute
+          const taskId = this.getAttribute("data-task-id");
+
+          // Make an AJAX request to complete the task
+          fetch(`/todo_list_tasks/${taskId}/complete_task`, {
+            method: "POST",
+            headers: {
+              "X-CSRF-Token": "<%= form_authenticity_token %>",
+            },
+          })
+            .then(response => {
+              if (response.ok) {
+                // Redirect to the completed tasks page
+                window.location.href = "<%= completed_tasks_path %>";
+              } else {
+                console.error("Error completing the task.");
+              }
+            });
+        }
+      });
+    });
+  });
+</script>

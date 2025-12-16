@@ -60,6 +60,8 @@ end
     todo_list_task = current_user.todo_list_tasks.find(params[:id])
     todo_list_task.update(completed: true)
     head :ok
+    todo_list_task = TodoListTask.find(params[:id])
+    todo_list_task.update(completed: true)
   end
   def completed_tasks
     @completed_tasks = current_user.todo_list_tasks.where(completed: true)
