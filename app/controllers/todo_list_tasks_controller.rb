@@ -57,8 +57,9 @@ end
   end
 
   def complete_task
-    todo_list_task = TodoListTask.find(params[:id])
+    todo_list_task = current_user.todo_list_tasks.find(params[:id])
     todo_list_task.update(completed: true)
+    head :ok
   end
   def completed_tasks
     @completed_tasks = current_user.todo_list_tasks.where(completed: true)
@@ -81,7 +82,7 @@ end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_todo_list_task
-      @todo_list_task = TodoListTask.find(params[:id])
+      @todo_list_task = current_user.todo_list_tasks.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

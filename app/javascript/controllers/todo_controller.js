@@ -4,8 +4,10 @@ export default class extends Controller {
   static targets = ["checkbox", "task"];
 
   connect() {
+    this.boundCheckboxChange = this.handleCheckboxChange.bind(this);
+
     this.checkboxTargets.forEach((checkbox) => {
-      checkbox.addEventListener("change", this.handleCheckboxChange.bind(this));
+      checkbox.addEventListener("change", this.boundCheckboxChange);
     });
 
     // Apply the visibility state when the page loads
@@ -15,9 +17,11 @@ export default class extends Controller {
   }
 
   disconnect() {
-    this.checkboxTargets.forEach((checkbox) => {
-      checkbox.removeEventListener("change", this.handleCheckboxChange);
-    });
+    if (this.boundCheckboxChange) {
+      this.checkboxTargets.forEach((checkbox) => {
+        checkbox.removeEventListener("change", this.boundCheckboxChange);
+      });
+    }
   }
 
   handleCheckboxChange(event) {
@@ -52,15 +56,31 @@ export default class extends Controller {
       }
     });
   }
-  complete() {
-    const taskId = this.checkboxTarget.dataset.taskId;
-    fetch(`/complete_task/${taskId}`, { method: "PATCH" })
+  complete(event) {
+    const checkbox = event.currentTarget;
+    const taskId = checkbox.dataset.taskId;
+
+    this.handleCheckboxChange(event);
+    this.sendCompleteRequest(taskId)
       .then(() => {
-        // You can update the UI as needed, e.g., hide the completed task
-        this.element.classList.add("completed");
+        window.location.href = "/completed_tasks";
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Error completing task:", error);
       });
+  }
+
+  sendCompleteRequest(taskId) {
+    return fetch(`/todo_list_tasks/${taskId}/complete_task`, {
+      method: "POST",
+      headers: {
+        "X-CSRF-Token": this.csrfToken,
+      },
+    });
+  }
+
+  get csrfToken() {
+    const tokenElement = document.querySelector('meta[name="csrf-token"]');
+    return tokenElement ? tokenElement.getAttribute("content") : "";
   }
 }

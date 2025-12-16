@@ -1,6 +1,6 @@
-<div class="nav" id="nav">
+<div class="nav" id="nav" data-controller="navbar" data-navbar-target="navbar">
   <nav class="nav__content">
-    <div class="nav__toggle" id="nav-toggle">
+    <div class="nav__toggle" id="nav-toggle" data-navbar-target="toggle">
       <i class='bx bx-chevron-right' ></i>
     </div>
     <div id="nav_logo">
@@ -11,64 +11,26 @@
     </a>
     </div>
     <div class="nav__list">
-      <a href="/todo_list_tasks" class="nav__link active-link">
+      <a href="/todo_list_tasks" class="nav__link" data-navbar-target="link">
       <i class='bx bx-grid-alt'></i>
       <span class="nav__name">My Tasks</span>
       </a>
-      <a href="/monthly_goals" class="nav__link">
+      <a href="/monthly_goals" class="nav__link" data-navbar-target="link">
       <i class='bx bx-file'></i>
       <span class="nav__name">My Monthly Goals</span>
       </a>
-      <a href="/feedbacks" class="nav__link">
+      <a href="/feedbacks" class="nav__link" data-navbar-target="link">
       <i class='bx bx-envelope' ></i>
       <span class="nav__name">My Monthly Feedbacks</span>
       </a>
-      <a href="/completed_tasks" class="nav__link">
+      <a href="/completed_tasks" class="nav__link" data-navbar-target="link">
       <i class='bx bx-bar-chart-square' ></i>
       <span class="nav__name">Completed Tasks</span>
       </a>
-      <%=link_to destroy_user_session_path, data: {turbo_method: :delete }, class: "nav__link" do  %>
+      <%=link_to destroy_user_session_path, data: {turbo_method: :delete }, class: "nav__link", "data-navbar-target": "link" do  %>
       <i class='bx bx-cog' ></i>
       <span class="nav__name">Log Out</span>
       <% end  %>
     </div>
   </nav>
 </div>
-
-
-
-  <script>
-  const linkColor = document.querySelectorAll('.nav__link')
-function colorLink(){
-  linkColor.forEach(l => l.classList.remove('active-link'))
-  this.classList.add('active-link')
-}
-linkColor.forEach(l => l.addEventListener('click', colorLink))
-/*=============== SHOW HIDDEN MENU ===============*/
-const showMenu = (toggleId, navbarId) =>{
-  const toggle = document.getElementById(toggleId),
-  navbar = document.getElementById(navbarId)
-  if(toggle && navbar){
-      toggle.addEventListener('click', ()=>{
-          /* Show menu */
-          navbar.classList.toggle('show-menu')
-          /* Rotate toggle icon */
-          toggle.classList.toggle('rotate-icon')
-      })
-  }
-}
-showMenu('nav-toggle','nav')
-  </script>
-<style>
-:root{
-  --title-color: hsl(228, 12%, 15%);
-}
- .imglogo {
-  border-radius: 50%;
-  display:block;
-}
-
-
-
-
-</style>
